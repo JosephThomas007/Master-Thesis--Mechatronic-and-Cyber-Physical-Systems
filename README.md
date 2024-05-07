@@ -49,5 +49,29 @@ Potree is a web-based viewer for large point cloud data sets. Here is how to set
    ```bash
    npm install
 
+# PotreeConverter Guide
+
+This guide provides instructions on how to use PotreeConverter to convert point cloud data for visualization with the Potree viewer.
+
+## Prerequisites
+
+- Download the latest version of PotreeConverter from the [PotreeConverter GitHub repository](https://github.com/potree/PotreeConverter).
+- Ensure your point cloud data is in a supported format such as `.las`, `.laz`, `.xyz`, `.ptx`, `.ply`, etc.
+
+## Installation
+
+PotreeConverter can be used directly if you download a pre-compiled binary. No installation is necessary, just extract the files to a known directory.
+
+If building from source, follow the build instructions provided in the repository's README.
+
+## Usage
+
+### Convert Your Data
+
+Open a command prompt or terminal. Navigate to the directory containing `PotreeConverter` or include the path to the executable in your command. Use the following syntax to convert your data:
+
+```bash
+./PotreeConverter /path/to/your/pointcloud.file -o /output/directory --generate-page pageName
+
 
 
