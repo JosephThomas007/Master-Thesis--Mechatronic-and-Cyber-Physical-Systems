@@ -26,11 +26,11 @@ YOLOv5 is a family of object detection architectures and models pretrained on th
    python -m venv env
    source env/bin/activate
 
-3. **Install dependencies***
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
 
-4. ***Run YOLOv5***
+4. **Run YOLOv5**
    ```bash
    python detect.py --source data/images --weights yolov5s.pt --conf 0.25
 
