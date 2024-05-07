@@ -1,1 +1,50 @@
+import cv2
+import os
+
+def stitch_panoramas(tile_folder, output_folder, num_panoramas=100, tiles_per_panorama=32):
+    for panorama_index in range(num_panoramas):
+        # Initialize 4 variables to hold horizontally stitched images
+        horizontal_panoramas = [None] * 4
+
+        for i in range(4):
+            # Initialize variable to hold horizontally stitched images for each iteration
+            variable_panorama = None
+
+            for j in range(8):
+                tile_index_within_panorama = i * 8 + j
+                tile_index = panorama_index * tiles_per_panorama + tile_index_within_panorama
+                tile_name = f"{panorama_index:05d}-pano-depth-r0-{tile_index_within_panorama:02d}.png"
+                tile_path = os.path.join(tile_folder, tile_name)
+
+                print(f"Processing tile: {tile_name}")
+
+                if os.path.exists(tile_path):
+                    tile = cv2.imread(tile_path)
+
+                    if variable_panorama is None:
+                        variable_panorama = tile
+                    elif tile.shape[0] == variable_panorama.shape[0]:  # Ensure the same number of rows
+                        variable_panorama = cv2.hconcat([variable_panorama, tile])
+                    else:
+                        print(f"Skipping tile {tile_name} due to mismatch in the number of rows.")
+
+            print(f"Horizontal stitching for variable {i + 1} completed.")
+            horizontal_panoramas[i] = variable_panorama
+
+        # Vertically concatenate the stitched variables
+        final_panorama = cv2.vconcat([panorama for panorama in horizontal_panoramas if panorama is not None])
+
+        # Save the stitched panorama in the provided output folder
+        output_path = os.path.join(output_folder, f"stitched_panorama_{panorama_index:05d}.jpg")
+        cv2.imwrite(output_path, final_panorama)
+
+        print(f"Vertical stitching for panorama {panorama_index:05d} completed. Panorama saved at:", output_path)
+
+if __name__ == "__main__":
+    tile_folder = r"C:\Users\jt22hal\Desktop\2019-04-26_07.06.46_cut2340\pano_depth\tiles\r0\0"
+    output_folder = r"C:\Users\jt22hal\Desktop\Pano_Stitch\pano depth"
+    num_panoramas = 100
+    tiles_per_panorama = 32
+
+    stitch_panoramas(tile_folder, output_folder, num_panoramas, tiles_per_panorama)
 
