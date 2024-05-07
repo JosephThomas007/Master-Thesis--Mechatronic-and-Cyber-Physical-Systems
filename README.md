@@ -73,5 +73,8 @@ Open a command prompt or terminal. Navigate to the directory containing `PotreeC
 ```bash
 ./PotreeConverter /path/to/your/pointcloud.file -o /output/directory --generate-page pageName
 
+![Sample Image](images/sample.png "Sample Image Title")
+
+
 
 
