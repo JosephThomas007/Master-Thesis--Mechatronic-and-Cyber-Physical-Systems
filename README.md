@@ -20,3 +20,8 @@ YOLOv5 is a family of object detection architectures and models pretrained on th
    ```bash
    git clone https://github.com/JosephThomas007/yolov5.git
    cd yolov5
+
+2. **Set up Python Environment**
+   ```bash
+   python -m venv env
+   source env/bin/activate
