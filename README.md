@@ -49,6 +49,6 @@ Potree is a web-based viewer for large point cloud data sets. Here is how to set
    ```bash
    npm install
 
-3.**
+
 
 
