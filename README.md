@@ -45,7 +45,7 @@ Potree is a web-based viewer for large point cloud data sets. Here is how to set
    git clone https://github.com/[YourGitHubUsername]/potree.git
    cd potree
 
-2.**Install Node.js dependencies**
+2. **Install Node.js dependencies**
    ```bash
    npm install
 
